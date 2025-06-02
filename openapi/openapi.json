@@ -1308,8 +1308,9 @@
                                                         "nullable": true
                                                     },
                                                     "daily_summary_at": {
-                                                        "type": "time",
-                                                        "example": "09:30",
+                                                        "type": "string",
+                                                        "format": "time",
+                                                        "example": "09:30:00",
                                                         "nullable": true
                                                     },
                                                     "summary_email": {
@@ -1374,8 +1375,9 @@
                                         "example": 2
                                     },
                                     "daily_summary_at": {
-                                        "type": "time",
-                                        "example": "09:30",
+                                        "type": "string",
+                                        "format": "time",
+                                        "example": "09:30:00",
                                         "nullable": true
                                     },
                                     "summary_email": {
@@ -1437,8 +1439,9 @@
                                             "nullable": true
                                         },
                                         "daily_summary_at": {
-                                            "type": "time",
-                                            "example": "09:30",
+                                            "type": "string",
+                                            "format": "time",
+                                            "example": "09:30:00",
                                             "nullable": true
                                         },
                                         "summary_email": {
@@ -1550,8 +1553,9 @@
                                             "nullable": true
                                         },
                                         "daily_summary_at": {
-                                            "type": "time",
-                                            "example": "09:30",
+                                            "type": "string",
+                                            "format": "time",
+                                            "example": "09:30:00",
                                             "nullable": true
                                         },
                                         "summary_email": {
@@ -1637,8 +1641,9 @@
                                         "example": 2
                                     },
                                     "daily_summary_at": {
-                                        "type": "time",
-                                        "example": "09:30",
+                                        "type": "string",
+                                        "format": "time",
+                                        "example": "09:30:00",
                                         "nullable": true
                                     },
                                     "summary_email": {
@@ -1700,8 +1705,9 @@
                                             "nullable": true
                                         },
                                         "daily_summary_at": {
-                                            "type": "time",
-                                            "example": "09:30",
+                                            "type": "string",
+                                            "format": "time",
+                                            "example": "09:30:00",
                                             "nullable": true
                                         },
                                         "summary_email": {
@@ -1809,9 +1815,7 @@
         "securitySchemes": {
             "sanctum": {
                 "type": "http",
-                "description": "Use a bearer token to access these endpoints",
-                "name": "Authorization",
-                "in": "header",
+                "description": "Enter your JWT token in the format 'Bearer <token>'",
                 "bearerFormat": "JWT",
                 "scheme": "bearer"
             }
