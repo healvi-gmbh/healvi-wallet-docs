@@ -1,0 +1,1838 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Healvi Wallet API",
+        "description": "API for managing Healvi Wallet APIs",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/companies": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get all companies",
+                "operationId": "a261a49d113a2af2a5ccb5798c6aae7e",
+                "responses": {
+                    "200": {
+                        "description": "Returns all companies",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Create a new company",
+                "operationId": "4ba2fab8115d4cb8d481328838cb4bba",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Tech Corp"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "techc@gmail.com",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Company created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "user_id": {
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/companies/{id}": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Fetch a company by ID",
+                "operationId": "50805cb17562834cb99c0477437c5221",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Company ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Company fetched successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "user_id": {
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Update an existing company",
+                "operationId": "b7f9d0719d086647ab3ae195220c1e0a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Company ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Updated Company Name"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "Updated Company Email",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Company updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "user_id": {
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Delete a company",
+                "operationId": "1ac24859e93bfa251a6d0c57ef1ca184",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Company ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Company deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/customers": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get all customers for the authenticated user's companies",
+                "operationId": "1b873d7b0c63876f30a978b52c4d24d2",
+                "parameters": [
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of customers to return per page (default: 10)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 10,
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number to retrieve (default: 1)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1,
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customers list retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Customers list retrieved successfully"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "CID": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "email": {
+                                                        "type": "string"
+                                                    },
+                                                    "url": {
+                                                        "type": "string"
+                                                    },
+                                                    "number_range_id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "marketing_opt_in_at": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "meta": {
+                                            "description": "Pagination meta data",
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "last_page": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "per_page": {
+                                                    "type": "integer",
+                                                    "example": 10
+                                                },
+                                                "total": {
+                                                    "type": "integer",
+                                                    "example": 45
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "An unexpected error occurred while retrieving customers."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Create a new customer",
+                "operationId": "747630c757eae4c38404384330e68c57",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "company_id",
+                                    "CID",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "CID": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "number_range_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "marketing_opt_in_at": {
+                                        "description": "Datetime when the customer opted in to marketing. Null if not opted in.",
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "nullable": true
+                                    },
+                                    "send_self_service_email": {
+                                        "description": "Send the customer a notification with the self-service page URL",
+                                        "type": "boolean",
+                                        "example": true,
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Customer created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "company_id": {
+                                                    "type": "integer"
+                                                },
+                                                "CID": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "number_range_id": {
+                                                    "type": "integer"
+                                                },
+                                                "marketing_opt_in_at": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/customers/{id}": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get a specific customer by ID",
+                "operationId": "d03d1278b7e26322e9a425406bc4e9f2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Customer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "CID": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "number_range_id": {
+                                                    "type": "integer"
+                                                },
+                                                "marketing_opt_in_at": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Customer not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Update an existing customer",
+                "operationId": "32da1527afa82d1a6b0e034146f1032d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Customer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CID": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "marketing_opt_in_at": {
+                                        "description": "Datetime when the customer opted in to marketing. Null if not opted in.",
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Customer updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "company_id": {
+                                                    "type": "integer"
+                                                },
+                                                "CID": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "number_range_id": {
+                                                    "type": "integer"
+                                                },
+                                                "marketing_opt_in_at": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Customer not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Delete a customer",
+                "operationId": "e9f16ac94d63309225711a1f3dfb245a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Customer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Customer not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/customers/{id}/send-self-service-email": {
+            "post": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Send self-service email to a customer",
+                "description": "Sends a self-service email to a customer. The request is rate-limited to once every 2 minutes per user/customer pair.",
+                "operationId": "sendSelfServiceEmail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Customer ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Self-service email sent successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Self-service email sent successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Customer does not have an email address",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Customer does not have an email address."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Rate limit exceeded",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "You can only send the self-service email once every 2 minutes."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "An error occurred while sending the self-service email."
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Exception message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/number-ranges": {
+            "get": {
+                "tags": [
+                    "Number Ranges"
+                ],
+                "summary": "Get all number ranges for the authenticated user's companies",
+                "operationId": "03bd5a4146737d1d8c45bca4e6760bda",
+                "responses": {
+                    "200": {
+                        "description": "Number ranges list retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "nullable": true
+                                            },
+                                            "start": {
+                                                "type": "integer"
+                                            },
+                                            "end": {
+                                                "type": "integer",
+                                                "nullable": true
+                                            },
+                                            "latest_value": {
+                                                "type": "integer",
+                                                "nullable": true
+                                            },
+                                            "increase_by": {
+                                                "type": "integer"
+                                            },
+                                            "prefix": {
+                                                "type": "string",
+                                                "nullable": true
+                                            },
+                                            "suffix": {
+                                                "type": "string",
+                                                "nullable": true
+                                            },
+                                            "padding": {
+                                                "type": "integer"
+                                            },
+                                            "company": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to retrieve number ranges"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Number Ranges"
+                ],
+                "summary": "Create a number range",
+                "operationId": "5eac59cec3288cf76700674c186831ad",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "company_id",
+                                    "start"
+                                ],
+                                "properties": {
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Range 2"
+                                    },
+                                    "start": {
+                                        "type": "integer",
+                                        "example": 11
+                                    },
+                                    "end": {
+                                        "type": "integer",
+                                        "example": 20
+                                    },
+                                    "latest_value": {
+                                        "type": "integer",
+                                        "example": 12
+                                    },
+                                    "increase_by": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "prefix": {
+                                        "type": "string",
+                                        "example": "A"
+                                    },
+                                    "suffix": {
+                                        "type": "string",
+                                        "example": "B"
+                                    },
+                                    "padding": {
+                                        "type": "integer",
+                                        "example": "4"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Number range created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 4
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Range 2"
+                                                },
+                                                "start": {
+                                                    "type": "integer",
+                                                    "example": 11
+                                                },
+                                                "end": {
+                                                    "type": "integer",
+                                                    "example": 20
+                                                },
+                                                "latest_value": {
+                                                    "type": "integer",
+                                                    "example": 12
+                                                },
+                                                "increase_by": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "prefix": {
+                                                    "type": "string",
+                                                    "example": "A"
+                                                },
+                                                "suffix": {
+                                                    "type": "string",
+                                                    "example": "B"
+                                                },
+                                                "padding": {
+                                                    "type": "integer",
+                                                    "example": "4"
+                                                },
+                                                "company": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": 1
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "Company 1"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/number-ranges/{id}": {
+            "get": {
+                "tags": [
+                    "Number Ranges"
+                ],
+                "summary": "Get a specific number range",
+                "operationId": "4a57ee35a7265de561b2928f8f2f9c1b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Number range details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 4
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Range 2"
+                                                },
+                                                "start": {
+                                                    "type": "integer",
+                                                    "example": 11
+                                                },
+                                                "end": {
+                                                    "type": "integer",
+                                                    "example": 20
+                                                },
+                                                "latest_value": {
+                                                    "type": "integer",
+                                                    "example": 12
+                                                },
+                                                "increase_by": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "prefix": {
+                                                    "type": "string",
+                                                    "example": "A"
+                                                },
+                                                "suffix": {
+                                                    "type": "string",
+                                                    "example": "B"
+                                                },
+                                                "padding": {
+                                                    "type": "integer",
+                                                    "example": "4"
+                                                },
+                                                "company": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": 1
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "Company 1"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Number Ranges"
+                ],
+                "summary": "Update a number range",
+                "operationId": "8183dbd0ce9ab5ba2cd65e5125dc4cc5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "start": {
+                                        "type": "integer"
+                                    },
+                                    "end": {
+                                        "type": "integer"
+                                    },
+                                    "latest_value": {
+                                        "type": "integer"
+                                    },
+                                    "increase_by": {
+                                        "type": "integer"
+                                    },
+                                    "prefix": {
+                                        "type": "string"
+                                    },
+                                    "suffix": {
+                                        "type": "string"
+                                    },
+                                    "padding": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Number Ranges"
+                ],
+                "summary": "Delete a number range",
+                "operationId": "0c4195b809509d755555888f260132bb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted successfully"
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/signup-pages": {
+            "get": {
+                "tags": [
+                    "Signup Pages"
+                ],
+                "summary": "List signup pages",
+                "operationId": "65da735b7a145b6e9691647c4617b22a",
+                "responses": {
+                    "200": {
+                        "description": "List of signup pages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "SignUp Title",
+                                                        "nullable": true
+                                                    },
+                                                    "unique_id": {
+                                                        "type": "string",
+                                                        "format": "uuid",
+                                                        "example": "fb3733bd-b05b-47ba-ab2b-a2d59e1d33f2"
+                                                    },
+                                                    "company": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Acme Inc."
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "number_range": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 2
+                                                            },
+                                                            "title": {
+                                                                "type": "string",
+                                                                "example": "Main Range"
+                                                            }
+                                                        },
+                                                        "type": "object",
+                                                        "nullable": true
+                                                    },
+                                                    "daily_summary_at": {
+                                                        "type": "time",
+                                                        "example": "09:30",
+                                                        "nullable": true
+                                                    },
+                                                    "summary_email": {
+                                                        "type": "string",
+                                                        "example": "comps@gmail.com",
+                                                        "nullable": true
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-05-27 10:00:00"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-05-27 10:05:00"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Signup Pages"
+                ],
+                "summary": "Create signup page",
+                "operationId": "f3d474ed32b87f20f895ad67ec929219",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "company_id",
+                                    "number_range_id"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "SignUp Title",
+                                        "nullable": true
+                                    },
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "number_range_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "daily_summary_at": {
+                                        "type": "time",
+                                        "example": "09:30",
+                                        "nullable": true
+                                    },
+                                    "summary_email": {
+                                        "type": "string",
+                                        "example": "comps@gmail.com",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Signup page created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "SignUp Title",
+                                            "nullable": true
+                                        },
+                                        "unique_id": {
+                                            "type": "string",
+                                            "example": "fb3733bd-b05b-47ba-ab2b-a2d59e1d33f2"
+                                        },
+                                        "company": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Acme Inc."
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "number_range": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 2
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Main Range"
+                                                }
+                                            },
+                                            "type": "object",
+                                            "nullable": true
+                                        },
+                                        "daily_summary_at": {
+                                            "type": "time",
+                                            "example": "09:30",
+                                            "nullable": true
+                                        },
+                                        "summary_email": {
+                                            "type": "string",
+                                            "example": "comps@gmail.com",
+                                            "nullable": true
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2025-05-27 10:00:00"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2025-05-27 10:00:00"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation or conflict",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "A signup page for this company and number range already exists."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/signup-pages/{id}": {
+            "get": {
+                "tags": [
+                    "Signup Pages"
+                ],
+                "summary": "Get signup page",
+                "operationId": "121ed7f305114920ff9f5553bbdaabe8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Signup page found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "SignUp Title",
+                                            "nullable": true
+                                        },
+                                        "unique_id": {
+                                            "type": "string",
+                                            "example": "fb3733bd-b05b-47ba-ab2b-a2d59e1d33f2"
+                                        },
+                                        "company": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Acme Inc."
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "number_range": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 2
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Main Range"
+                                                }
+                                            },
+                                            "type": "object",
+                                            "nullable": true
+                                        },
+                                        "daily_summary_at": {
+                                            "type": "time",
+                                            "example": "09:30",
+                                            "nullable": true
+                                        },
+                                        "summary_email": {
+                                            "type": "string",
+                                            "example": "comps@gmail.com",
+                                            "nullable": true
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2025-05-27 10:00:00"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2025-05-27 10:00:00"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Signup page not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Signup Pages"
+                ],
+                "summary": "Update signup page",
+                "operationId": "d2e61f64adc2d5f6848331cc2c34b010",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "company_id",
+                                    "number_range_id"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "SignUp Title",
+                                        "nullable": true
+                                    },
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "number_range_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "daily_summary_at": {
+                                        "type": "time",
+                                        "example": "09:30",
+                                        "nullable": true
+                                    },
+                                    "summary_email": {
+                                        "type": "string",
+                                        "example": "comps@gmail.com",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Signup page updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "SignUp Title",
+                                            "nullable": true
+                                        },
+                                        "unique_id": {
+                                            "type": "string",
+                                            "example": "fb3733bd-b05b-47ba-ab2b-a2d59e1d33f2"
+                                        },
+                                        "company": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Acme Inc."
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "number_range": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 2
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Main Range"
+                                                }
+                                            },
+                                            "type": "object",
+                                            "nullable": true
+                                        },
+                                        "daily_summary_at": {
+                                            "type": "time",
+                                            "example": "09:30",
+                                            "nullable": true
+                                        },
+                                        "summary_email": {
+                                            "type": "string",
+                                            "example": "comps@gmail.com",
+                                            "nullable": true
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2025-05-27 10:00:00"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2025-05-27 10:05:00"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Signup page not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Signup page not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Signup Pages"
+                ],
+                "summary": "Delete signup page",
+                "operationId": "13bdc2ca920788b7509b4c00bcd47e41",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Signup page deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Signup page deleted successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Signup page not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Signup page not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "http",
+                "description": "Use a bearer token to access these endpoints",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Companies",
+            "description": "Companies"
+        },
+        {
+            "name": "Customers",
+            "description": "Customers"
+        },
+        {
+            "name": "Number Ranges",
+            "description": "Number Ranges"
+        },
+        {
+            "name": "Signup Pages",
+            "description": "Signup Pages"
+        }
+    ]
+}
