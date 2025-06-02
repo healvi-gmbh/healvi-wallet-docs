@@ -40,11 +40,8 @@
           {
             "group": "API Documentation",
             "pages": [
-              "api-reference/introduction",
-              {
-                "id": "healvi-wallet-openapi", 
-                "openapi": "openapi/openapi.json"
-              }
+              "api-reference/introduction"
+              
             ]
           },
           {
