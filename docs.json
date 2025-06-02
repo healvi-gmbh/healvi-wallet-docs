@@ -12,7 +12,7 @@
     "tabs": [
       {
         "tab": "API Reference",
-        "openapi": "/openapi/openapi.json"
+        "openapi": "https://wallet-testing.healvi.de/docs?api-docs.json"
       }
     ],
     "global": {
