@@ -39,10 +39,7 @@
         "groups": [
           {
             "group": "Endpoints",
-            "openapi": {
-              "source": "/openapi/openapi.json",
-              "directory": "api-reference"
-            }
+            "openapi": "https://wallet-testing.healvi.de/docs?api-docs.json"
           }
         ]
       }
