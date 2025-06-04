@@ -1318,6 +1318,10 @@
                                                         "example": "comps@gmail.com",
                                                         "nullable": true
                                                     },
+                                                    "email_confirmation_required": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    },
                                                     "created_at": {
                                                         "type": "string",
                                                         "format": "date-time",
@@ -1384,6 +1388,10 @@
                                         "type": "string",
                                         "example": "comps@gmail.com",
                                         "nullable": true
+                                    },
+                                    "email_confirmation_required": {
+                                        "type": "boolean",
+                                        "example": true
                                     }
                                 },
                                 "type": "object"
@@ -1448,6 +1456,10 @@
                                             "type": "string",
                                             "example": "comps@gmail.com",
                                             "nullable": true
+                                        },
+                                        "email_confirmation_required": {
+                                            "type": "boolean",
+                                            "example": true
                                         },
                                         "created_at": {
                                             "type": "string",
@@ -1563,6 +1575,10 @@
                                             "example": "comps@gmail.com",
                                             "nullable": true
                                         },
+                                        "email_confirmation_required": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
                                         "created_at": {
                                             "type": "string",
                                             "example": "2025-05-27 10:00:00"
@@ -1650,6 +1666,10 @@
                                         "type": "string",
                                         "example": "comps@gmail.com",
                                         "nullable": true
+                                    },
+                                    "email_confirmation_required": {
+                                        "type": "boolean",
+                                        "example": true
                                     }
                                 },
                                 "type": "object"
@@ -1714,6 +1734,10 @@
                                             "type": "string",
                                             "example": "comps@gmail.com",
                                             "nullable": true
+                                        },
+                                        "email_confirmation_required": {
+                                            "type": "boolean",
+                                            "example": true
                                         },
                                         "created_at": {
                                             "type": "string",
@@ -1795,6 +1819,177 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Signup page not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "api/signup-pages/{id}/customers": {
+            "get": {
+                "tags": [
+                    "Signup Pages"
+                ],
+                "summary": "Get sign-up customers for a specific date",
+                "description": "Returns a paginated list of customers who registered via the specified sign-up page on a given date.",
+                "operationId": "getSignUpSummary",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sign-up Page ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Date of registration (YYYY-MM-DD)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of results per page (pagination)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number to retrieve (default: 1)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of customers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 123
+                                                    },
+                                                    "CID": {
+                                                        "type": "string",
+                                                        "example": "CID-00123"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "John"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "john@gmail.com"
+                                                    },
+                                                    "url": {
+                                                        "type": "string"
+                                                    },
+                                                    "number_range_id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "marketing_opt_in_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-05-30T12:10:00Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "object"
+                                        },
+                                        "meta": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "date": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The date field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Sign-up page not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given Sign-up ID not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Failed to retrieve sign-up summary."
                                         }
                                     },
                                     "type": "object"
