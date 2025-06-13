@@ -33,6 +33,12 @@
                                             },
                                             "email": {
                                                 "type": "string"
+                                            },
+                                            "latitude": {
+                                                "type": "number"
+                                            },
+                                            "longitude": {
+                                                "type": "number"
                                             }
                                         },
                                         "type": "object"
@@ -71,6 +77,18 @@
                                         "type": "string",
                                         "example": "techc@gmail.com",
                                         "nullable": true
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 52.520008,
+                                        "nullable": true
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 13.404954,
+                                        "nullable": true
                                     }
                                 },
                                 "type": "object"
@@ -101,6 +119,12 @@
                                                 },
                                                 "email": {
                                                     "type": "string"
+                                                },
+                                                "latitude": {
+                                                    "type": "number"
+                                                },
+                                                "longitude": {
+                                                    "type": "number"
                                                 }
                                             },
                                             "type": "object"
@@ -157,6 +181,12 @@
                                                 },
                                                 "email": {
                                                     "type": "string"
+                                                },
+                                                "latitude": {
+                                                    "type": "number"
+                                                },
+                                                "longitude": {
+                                                    "type": "number"
                                                 }
                                             },
                                             "type": "object"
@@ -211,6 +241,18 @@
                                         "type": "string",
                                         "example": "Updated Company Email",
                                         "nullable": true
+                                    },
+                                    "latitude": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 52.520008,
+                                        "nullable": true
+                                    },
+                                    "longitude": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 13.404954,
+                                        "nullable": true
                                     }
                                 },
                                 "type": "object"
@@ -241,6 +283,12 @@
                                                 },
                                                 "email": {
                                                     "type": "string"
+                                                },
+                                                "latitude": {
+                                                    "type": "number"
+                                                },
+                                                "longitude": {
+                                                    "type": "number"
                                                 }
                                             },
                                             "type": "object"
@@ -1834,7 +1882,7 @@
                 ]
             }
         },
-        "api/signup-pages/{id}/customers": {
+        "/api/signup-pages/{id}/customers": {
             "get": {
                 "tags": [
                     "Signup Pages"
