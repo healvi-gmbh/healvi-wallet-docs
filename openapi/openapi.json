@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Healvi Wallet API",
-        "description": "API for managing Healvi Wallet APIs",
+        "description": "API for managing Healvi Wallet",
         "version": "1.0.0"
     },
     "paths": {
